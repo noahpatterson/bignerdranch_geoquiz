@@ -39,23 +39,23 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
-        <Button
+        <ImageButton
             android:id="@+id/prev_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/prev_button"
-            android:drawableLeft="@drawable/arrow_left"
-            android:drawableStart="@drawable/arrow_left"
+            android:src="@drawable/arrow_left"
             android:drawablePadding="4dp"
+            android:contentDescription="@string/previous_question_button"
             style="?android:attr/buttonBarButtonStyle"
             />
-        <Button
+        <ImageButton
             android:id="@+id/next_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/next_button"
-            android:drawableRight="@drawable/arrow_right"
-            android:drawableEnd="@drawable/arrow_right"
+            android:src="@drawable/arrow_right"
+            android:contentDescription="@string/next_question_button"
             android:drawablePadding="4dp"
             style="?android:attr/buttonBarButtonStyle"
             />
