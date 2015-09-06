@@ -40,6 +40,13 @@ public class QuizActivity extends AppCompatActivity {
 
         setQuestionTextView();
 
+        mQuestionTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goToNextQuestion();
+            }
+        });
+
         mTrueButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -57,10 +64,14 @@ public class QuizActivity extends AppCompatActivity {
         mNextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mCurrentIndex = (mCurrentIndex + 1) % mQuestionBank.length;
-                setQuestionTextView();
+                goToNextQuestion();
             }
         });
+    }
+
+    private void goToNextQuestion() {
+        mCurrentIndex = (mCurrentIndex + 1) % mQuestionBank.length;
+        setQuestionTextView();
     }
 
     private void setQuestionTextView() {
