@@ -13,11 +13,14 @@ import android.widget.Toast;
 
 public class QuizActivity extends AppCompatActivity {
     private static final String LOG_TAG = "main activity";
+    private static final String QUESTION_INDEX = "index";
     private Button mTrueButton;
     private Button mFalseButton;
     private ImageButton mNextButton;
     private ImageButton mPrevButton;
     private TextView mQuestionTextView;
+
+
 
     private Question[] mQuestionBank = new Question[]{
             new Question(R.string.question_oceans, true),
@@ -40,6 +43,10 @@ public class QuizActivity extends AppCompatActivity {
         mNextButton       = (ImageButton) findViewById(R.id.next_button);
         mPrevButton       = (ImageButton) findViewById(R.id.prev_button);
         mQuestionTextView = (TextView) findViewById(R.id.question_text_view);
+
+        if (savedInstanceState != null) {
+            mCurrentIndex = savedInstanceState.getInt(QUESTION_INDEX, 0);
+        }
 
         setQuestionTextView();
 
@@ -77,6 +84,43 @@ public class QuizActivity extends AppCompatActivity {
                 goToPreviousQuestion();
             }
         });
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.d(LOG_TAG, "in onStart");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.d(LOG_TAG, "in onPause");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.d(LOG_TAG, "in onResume");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.d(LOG_TAG, "in onStop");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.d(LOG_TAG, "in onDestroy");
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        Log.d(LOG_TAG, "in onSaveInstanceState");
+        outState.putInt(QUESTION_INDEX, mCurrentIndex);
     }
 
     private void goToPreviousQuestion() {
