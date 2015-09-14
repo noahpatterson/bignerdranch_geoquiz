@@ -16,6 +16,7 @@ public class QuizActivity extends AppCompatActivity {
     private static final String QUESTION_INDEX = "index";
     private Button mTrueButton;
     private Button mFalseButton;
+    private Button mCheatButton;
     private ImageButton mNextButton;
     private ImageButton mPrevButton;
     private TextView mQuestionTextView;
@@ -40,6 +41,7 @@ public class QuizActivity extends AppCompatActivity {
 
         mTrueButton       = (Button) findViewById(R.id.true_button);
         mFalseButton      = (Button) findViewById(R.id.false_button);
+        mCheatButton      = (Button) findViewById(R.id.cheat_button);
         mNextButton       = (ImageButton) findViewById(R.id.next_button);
         mPrevButton       = (ImageButton) findViewById(R.id.prev_button);
         mQuestionTextView = (TextView) findViewById(R.id.question_text_view);
@@ -68,6 +70,14 @@ public class QuizActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 checkAnswer(false);
+            }
+        });
+
+        mCheatButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Boolean isAnswerTrue = mQuestionBank[mCurrentIndex].isAnswerTrue();
+                startActivity(CheatActivity.newIntent(QuizActivity.this, isAnswerTrue));
             }
         });
 
